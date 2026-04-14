@@ -30,7 +30,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,700;0,800;1,400&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,700;0,800;1,400&family=Cal+Sans&family=Inter+Tight:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
         <link rel="preconnect" href="https://player.vimeo.com" />
