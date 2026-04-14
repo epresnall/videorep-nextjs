@@ -60,10 +60,10 @@ const WHAT_YOU_GET = [
 ];
 
 const DISCOVERY = [
-  { t: "User Searches a Topic", img: `${I}/wr1PGtwAP4SXtS3zSEt2CEJIiI.png` },
-  { t: "Video Appears in Results", img: `${I}/Mg36dwWhJ7Jb0JhrBJQiFHDaTM.png` },
-  { t: "Pulled into AI Answers", img: `${I}/QvW2RZ0d0YkZUQJwW7fc3154M.png` },
-  { t: "Trusted Brand Visibility", img: `${I}/Q1hPJghRTXSieZgxVWtEobc0OE8.png` },
+  { t: "User Searches a Topic", icon: "search" as const, faded: true },
+  { t: "Video Appears in Results", icon: "play" as const },
+  { t: "Pulled into AI Answers", icon: "wand" as const },
+  { t: "Trusted Brand Visibility", icon: "check" as const, highlighted: true },
 ];
 
 const TESTIMONIALS = [
@@ -176,6 +176,14 @@ function Cross() {
       <line x1="6" y1="6" x2="18" y2="18" />
     </svg>
   );
+}
+
+function DiscoveryIcon({ name, color }: { name: "search" | "play" | "wand" | "check"; color: string }) {
+  const common = { width: 22, height: 22, viewBox: "0 0 24 24", fill: "none", stroke: color, strokeWidth: 2, strokeLinecap: "round" as const, strokeLinejoin: "round" as const, "aria-hidden": true };
+  if (name === "search") return <svg {...common}><circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>;
+  if (name === "play") return <svg {...common}><rect x="3" y="5" width="18" height="14" rx="2" /><polygon points="10 9 16 12 10 15 10 9" fill={color} stroke="none" /></svg>;
+  if (name === "wand") return <svg {...common}><path d="M15 4V2M15 14v-2M8 9h2M20 9h2M17.8 11.8l1.4 1.4M17.8 6.2l1.4-1.4M3 21l9-9M12.2 6.2l-1.4-1.4" /></svg>;
+  return <svg {...common}><circle cx="12" cy="12" r="9" fill={color} stroke="none" /><polyline points="8 12 11 15 16 9" stroke="white" /></svg>;
 }
 
 function Logo() {
@@ -390,46 +398,50 @@ export default function BlogVideosPage() {
       </section>
 
       {/* SEARCH + AI DISCOVERY */}
-      <section style={{ background: NAVY, color: "white" }}>
-        <div style={{ ...sectionPad, textAlign: "center" }}>
-          <Eyebrow color={PURPLE} bg="rgba(80,100,246,0.18)">Search + AI Discovery</Eyebrow>
-          <div style={{ marginTop: 20 }}>
-            <h2 style={{ fontFamily: "'Cal Sans', sans-serif", fontSize: 48, fontWeight: 600, lineHeight: "57.6px", color: "white", margin: 0 }}>
-              Written Content Alone <br /><span style={{ color: PURPLE }}>Isn&apos;t Enough Anymore</span>
-            </h2>
+      <section>
+        <div style={{ ...sectionPad, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "center" }}>
+          <div>
+            <Eyebrow color={PURPLE}>Search + AI Discovery</Eyebrow>
+            <div style={{ marginTop: 20 }}>
+              <H2>Written Content Alone <br /><span style={{ color: PURPLE }}>Isn&apos;t Enough Anymore</span></H2>
+            </div>
+            <div style={{ maxWidth: 480, marginTop: 20 }}>
+              <P>AI answers and modern search increasingly surface video for educational queries. Video helps your expertise get shown — and trusted.</P>
+            </div>
+            <div style={{ marginTop: 36 }}>
+              <PrimaryButton href={CAL}>Book A Call <Phone /></PrimaryButton>
+            </div>
           </div>
-          <div style={{ maxWidth: 640, margin: "20px auto 0" }}>
-            <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 16, fontWeight: 400, lineHeight: "25.6px", color: "rgba(255,255,255,0.7)", margin: 0, letterSpacing: "0.48px" }}>
-              AI answers and modern search increasingly surface video for educational queries. Video helps your expertise get shown — and trusted.
-            </p>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, marginTop: 56 }}>
+          <div style={{ background: "rgba(80,100,246,0.10)", borderRadius: 20, padding: "48px 32px", position: "relative", minHeight: 520, display: "flex", flexDirection: "column", justifyContent: "space-around", alignItems: "center", gap: 14 }}>
+            <div style={{ position: "absolute", left: "50%", top: 60, bottom: 60, width: 2, background: PURPLE, opacity: 0.5, transform: "translateX(-50%)" }} />
             {DISCOVERY.map((d) => (
-              <div key={d.t} style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 14, padding: 24, textAlign: "center" }}>
-                <div style={{ height: 120, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <Image src={d.img} alt={d.t} width={160} height={110} style={{ width: "auto", height: 110, objectFit: "contain" }} />
-                </div>
-                <h3 style={{ fontFamily: "'Cal Sans', sans-serif", fontSize: 18, fontWeight: 600, color: "white", margin: "16px 0 0" }}>{d.t}</h3>
+              <div key={d.t} style={{ position: "relative", zIndex: 1, background: d.highlighted ? PURPLE : "white", border: d.highlighted ? "none" : "1px solid #EEF0F7", borderRadius: 12, padding: "14px 20px", display: "inline-flex", alignItems: "center", gap: 12, boxShadow: "0 6px 18px rgba(27,25,61,0.06)", opacity: d.faded ? 0.55 : 1, minWidth: 240 }}>
+                <DiscoveryIcon name={d.icon} color={d.highlighted ? "white" : PURPLE} />
+                <span style={{ fontFamily: "'Cal Sans', sans-serif", fontSize: 17, fontWeight: 600, color: d.highlighted ? "white" : NAVY }}>{d.t}</span>
               </div>
             ))}
-          </div>
-          <div style={{ marginTop: 40 }}>
-            <PrimaryButton href={CAL}>Book A Call <Phone /></PrimaryButton>
           </div>
         </div>
       </section>
 
       {/* MONTHLY VIDEO ENGINE */}
-      <section style={{ ...sectionPad, textAlign: "center" }}>
-        <Eyebrow color={PURPLE}>Monthly Video Engine</Eyebrow>
-        <div style={{ marginTop: 20 }}>
-          <H2>You Bring the Blogs.<br /><span style={{ color: PURPLE }}>We Ship The Videos.</span></H2>
-        </div>
-        <div style={{ maxWidth: 660, margin: "20px auto 0" }}>
-          <P>Choose how many posts you want converted each month. We handle everything end-to-end… from managing your VideoRep and script adaptation to editing and final delivery.</P>
-        </div>
-        <div style={{ marginTop: 36 }}>
-          <PrimaryButton href={CAL}>Book A Call <Phone /></PrimaryButton>
+      <section style={{ background: "#F9FAFC" }}>
+        <div style={{ ...sectionPad, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "center" }}>
+          <div style={{ background: "#F1F2F7", borderRadius: 20, padding: "56px 32px", position: "relative", minHeight: 520, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <Image src={`${I}/Mg36dwWhJ7Jb0JhrBJQiFHDaTM.png`} alt="Monthly Video Engine" width={550} height={430} style={{ width: "100%", height: "auto", maxWidth: 550, objectFit: "contain" }} />
+          </div>
+          <div>
+            <Eyebrow color={PURPLE}>Monthly Video Engine</Eyebrow>
+            <div style={{ marginTop: 20 }}>
+              <H2>You Bring the Blogs.<br /><span style={{ color: PURPLE }}>We Ship The Videos.</span></H2>
+            </div>
+            <div style={{ maxWidth: 480, marginTop: 20 }}>
+              <P>Choose how many posts you want converted each month. We handle everything end-to-end… from managing your VideoRep and script adaptation to editing and final delivery.</P>
+            </div>
+            <div style={{ marginTop: 36 }}>
+              <PrimaryButton href={CAL}>Book A Call <Phone /></PrimaryButton>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -465,28 +477,62 @@ export default function BlogVideosPage() {
           </div>
           <div style={{ marginTop: 56, display: "flex", flexDirection: "column", gap: 32 }}>
             {[
-              { tag: "Non-Profit | Health Education", title: "86,000+ Views On A Single Educational YouTube Video", body: "Human-led health education videos built for clarity and trust.", quote: "\u201CTop-notch presentation and production.\u201D", attr: "Dante Steward | Creative Director", img: `${I}/IQKddGGUVKfESbTRhHhxUrBqwQ.jpg` },
-              { tag: "B2B SaaS | Workflow Automation", title: "3x Increase In Qualified Audience Engagement", body: "Turned SEO blog content into thought-leadership video that held attention.", quote: "\u201CHigher engagement and stronger time on page.\u201D", attr: "Brandon Grimes | Marketing Manager", img: `${I}/swVXGV63Y8ah9w3L0rPxw9c9c.jpg` },
-              { tag: "Career Tech | Content Marketing", title: "$7,000+ In Production Cost Savings", body: "Converted a high-performing blog into video — without agencies or internal filming.", quote: "\u201CSeriously impressive quality and execution.\u201D", attr: "Career Tech Marketing Lead", img: `${I}/5it3iCvsFzN5KdNBI0BKvwc2hk.jpg` },
+              {
+                tag: "Non-Profit | Health Education",
+                title: "86,000+ Views On A Single Educational YouTube Video",
+                body: "Human-led health education videos built for clarity and trust.",
+                quote: "\u201CTop-notch presentation and production.\u201D",
+                attr: "Dante Steward | Creative Director",
+                photo: `${I}/Q1hPJghRTXSieZgxVWtEobc0OE8.png`,
+                videoTitle: "\u201CSpleen Organ Health - Enlarged Spleen, A Big Red Flag\u201D",
+                embed: "https://www.youtube.com/embed/bL7lUv0E7oY",
+              },
+              {
+                tag: "B2B SaaS | Workflow Automation",
+                title: "3x Increase In Qualified Audience Engagement",
+                body: "Turned SEO blog content into thought-leadership video that held attention.",
+                quote: "\u201CHigher engagement and stronger time on page.\u201D",
+                attr: "Brandon Grimes | Marketing Manager",
+                photo: `${I}/43haqKLV5VPslFL2XPqXsJczGE.png`,
+                videoTitle: "\u201CProcess Excellence, Operational Excellence and Business Excellence\u201D",
+                embed: "https://player.vimeo.com/video/642263700?autopause=0",
+              },
+              {
+                tag: "Career Tech | Content Marketing",
+                title: "$7,000+ In Production Cost Savings",
+                body: "Converted a high-performing blog into video \u2014 without agencies or internal filming.",
+                quote: "\u201CSeriously impressive quality and execution.\u201D",
+                attr: "Jacob Jacquet | CEO",
+                photo: `${I}/GkZOqYHIItqCEIVfZQPkecG3DL4.webp`,
+                videoTitle: "\u201CBest Cover Letters: Examples, Templates, and Writing Tips\u201D",
+                embed: "https://player.vimeo.com/video/642263700?autopause=0",
+              },
             ].map((c) => (
-              <div key={c.title} style={{ background: "white", borderRadius: 20, overflow: "hidden", border: "1px solid #EEF0F7", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0 }}>
-                <div style={{ position: "relative", minHeight: 360, background: NAVY }}>
-                  <Image src={c.img} alt={c.title} fill style={{ objectFit: "cover" }} />
-                </div>
-                <div style={{ padding: 40, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+              <div key={c.title} style={{ background: "white", borderRadius: 20, overflow: "hidden", border: "1px solid #EEF0F7", padding: 40, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40, alignItems: "center" }}>
+                <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
                   <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 13, fontWeight: 600, color: PURPLE, margin: 0, letterSpacing: "0.5px", textTransform: "uppercase" }}>{c.tag}</p>
-                  <h3 style={{ fontFamily: "'Cal Sans', sans-serif", fontSize: 30, fontWeight: 600, color: NAVY, margin: "12px 0 14px", lineHeight: "36px" }}>{c.title}</h3>
+                  <h3 style={{ fontFamily: "'Cal Sans', sans-serif", fontSize: 34, fontWeight: 600, color: NAVY, margin: "14px 0 16px", lineHeight: "40px" }}>{c.title}</h3>
                   <P>{c.body}</P>
-                  <div style={{ marginTop: 24, paddingTop: 24, borderTop: "1px solid #EEF0F7" }}>
-                    <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 17, fontWeight: 500, fontStyle: "italic", color: NAVY, margin: 0, lineHeight: "26px" }}>{c.quote}</p>
-                    <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 13, fontWeight: 600, color: GREY, margin: "8px 0 0", letterSpacing: "0.4px" }}>— {c.attr}</p>
+                  <div style={{ marginTop: 24, background: "#F9FAFC", border: "1px solid #EEF0F7", borderRadius: 12, padding: "16px 18px", display: "flex", alignItems: "center", gap: 14 }}>
+                    <div style={{ width: 40, height: 40, borderRadius: 999, overflow: "hidden", flexShrink: 0 }}>
+                      <Image src={c.photo} alt={c.attr} width={40} height={40} style={{ width: 40, height: 40, objectFit: "cover" }} />
+                    </div>
+                    <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 14, fontWeight: 500, color: NAVY, margin: 0, lineHeight: "20px" }}>
+                      {c.quote} <span style={{ color: GREY, fontWeight: 400 }}>— {c.attr}</span>
+                    </p>
                   </div>
-                  <div style={{ marginTop: 28, display: "flex", gap: 12, alignItems: "center" }}>
+                  <div style={{ marginTop: 28, display: "flex", gap: 16, alignItems: "center" }}>
                     <PrimaryButton href={CAL}>Book a Call <Phone /></PrimaryButton>
-                    <a href={CAL} target="_blank" rel="noopener noreferrer" style={{ color: PURPLE, fontFamily: "'Inter Tight', sans-serif", fontSize: 15, fontWeight: 600, textDecoration: "none", display: "inline-flex", alignItems: "center" }}>
+                    <a href={CAL} target="_blank" rel="noopener noreferrer" style={{ color: NAVY, fontFamily: "'Inter Tight', sans-serif", fontSize: 15, fontWeight: 600, textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 4 }}>
                       Read the Full Case Study <ArrowRight />
                     </a>
                   </div>
+                </div>
+                <div>
+                  <div style={{ position: "relative", width: "100%", paddingTop: "56.25%", borderRadius: 14, overflow: "hidden", background: NAVY, boxShadow: "0 14px 40px rgba(27,25,61,0.12)" }}>
+                    <iframe src={c.embed} title={c.videoTitle} allow="autoplay; fullscreen; picture-in-picture" allowFullScreen style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: 0 }} />
+                  </div>
+                  <p style={{ fontFamily: "'Cal Sans', sans-serif", fontSize: 22, fontWeight: 600, color: NAVY, margin: "16px 0 0", lineHeight: "28px", textAlign: "center" }}>{c.videoTitle}</p>
                 </div>
               </div>
             ))}
