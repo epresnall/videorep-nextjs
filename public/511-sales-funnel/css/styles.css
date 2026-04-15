@@ -1,11 +1,11 @@
 /* ============================================
-   VideoRep — Global Stylesheet
+   VideoRep â Global Stylesheet
    Brand: HubSpot approachable + Wistia royal blue
    ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
-/* ── Design Tokens ── */
+/* ââ Design Tokens ââ */
 :root {
   --blue:        #1e71e7;
   --blue-hover:  #1557C4;
@@ -41,7 +41,7 @@
   --container-narrow: 700px;
 }
 
-/* ── Reset ── */
+/* ââ Reset ââ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
@@ -65,7 +65,7 @@ img { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
 ul, ol { list-style: none; }
 
-/* ── Typography ── */
+/* ââ Typography ââ */
 h1 {
   font-size: 56px;
   font-weight: 800;
@@ -92,7 +92,7 @@ h3 {
 .text-white { color: var(--white); }
 .text-center { text-align: center; }
 
-/* ── Layout ── */
+/* ââ Layout ââ */
 .container {
   max-width: var(--container);
   margin: 0 auto;
@@ -121,7 +121,7 @@ h3 {
   align-items: center;
 }
 
-/* ── Eyebrow Labels ── */
+/* ââ Eyebrow Labels ââ */
 .eyebrow {
   font-size: 12px;
   font-weight: 700;
@@ -145,7 +145,7 @@ h3 {
 .eyebrow--light { color: var(--blue); }
 .eyebrow--no-dot::before { display: none; }
 
-/* ── Buttons ── */
+/* ââ Buttons ââ */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -200,7 +200,7 @@ h3 {
 }
 .link-arrow:hover { text-decoration: underline; }
 
-/* ── Cards ── */
+/* ââ Cards ââ */
 .card {
   background: var(--white);
   border-radius: var(--radius-card);
@@ -227,7 +227,7 @@ h3 {
 }
 .card--dark:hover { transform: translateY(-4px); }
 
-/* ── Sections ── */
+/* ââ Sections ââ */
 .section { padding: 100px 0; }
 .section--bg { background: var(--bg); }
 .section--white { background: var(--white); }
@@ -250,7 +250,7 @@ h3 {
   font-size: 18px;
 }
 
-/* ── Navigation ── */
+/* ââ Navigation ââ */
 .nav {
   position: fixed;
   top: 0;
@@ -354,7 +354,7 @@ h3 {
   margin-top: 12px;
 }
 
-/* ── Hero ── */
+/* ââ Hero ââ */
 .hero {
   background: var(--bg);
   padding: 120px 0 100px;
@@ -508,7 +508,7 @@ h3 {
 .floating-badge--top  { --float-rot: -6deg; }
 .floating-badge--bottom { --float-rot: 4deg; }
 
-/* ── Proof Bar ── */
+/* ââ Proof Bar ââ */
 .proof-bar {
   background: var(--white);
   padding: 32px 0;
@@ -550,7 +550,7 @@ h3 {
   color: var(--charcoal);
 }
 
-/* ── Problem Section ── */
+/* ââ Problem Section ââ */
 .stat-card__number {
   font-size: 40px;
   font-weight: 800;
@@ -583,7 +583,7 @@ h3 {
 .stat-card__icon--blue { background: #EBF5FF; }
 .stat-card__icon--red  { background: #FEF2F2; }
 
-/* ── Guide Section ── */
+/* ââ Guide Section ââ */
 .photo-placeholder {
   aspect-ratio: 4/5;
   background: var(--border);
@@ -643,7 +643,7 @@ h3 {
   font-style: normal;
 }
 
-/* ── How It Works ── */
+/* ââ How It Works ââ */
 .steps {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -675,7 +675,7 @@ h3 {
 }
 /* Arrow connectors */
 .step::after {
-  content: '→';
+  content: 'â';
   position: absolute;
   right: -28px;
   top: 50%;
@@ -686,7 +686,7 @@ h3 {
 }
 .step:last-child::after { display: none; }
 
-/* ── Guarantee ── */
+/* ââ Guarantee ââ */
 .guarantee-icon {
   width: 80px;
   height: 80px;
@@ -710,7 +710,7 @@ h3 {
   margin-top: 24px;
 }
 
-/* ── Case Studies ── */
+/* ââ Case Studies ââ */
 .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
 .case-card { padding: 40px; }
 .case-card__tag {
@@ -756,7 +756,7 @@ h3 {
   margin-top: 8px;
 }
 
-/* ── 511 Funnel (Dark Section) ── */
+/* ââ 511 Funnel (Dark Section) ââ */
 .funnel-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -821,7 +821,7 @@ h3 {
   margin-bottom: 24px;
 }
 
-/* ── Final CTA ── */
+/* ââ Final CTA ââ */
 .final-cta {
   text-align: center;
   max-width: 600px;
@@ -844,7 +844,7 @@ h3 {
   gap: 6px;
 }
 
-/* ── Footer ── */
+/* ââ Footer ââ */
 .footer {
   background: var(--dark-bg);
   padding: 60px 0 40px;
@@ -886,7 +886,7 @@ h3 {
   padding-top: 24px;
 }
 
-/* ── Scroll Reveal ── */
+/* ââ Scroll Reveal ââ */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -904,11 +904,11 @@ h3 {
 .stagger > *:nth-child(4) { transition-delay: 0.3s; }
 .stagger > *:nth-child(5) { transition-delay: 0.4s; }
 
-/* ── ADS PAGE — Minimal Nav ── */
+/* ââ ADS PAGE â Minimal Nav ââ */
 .nav--minimal .nav__links { display: none; }
 .nav--minimal .nav__actions .btn--outline { display: none; }
 
-/* ── ADS PAGE — Pain Points ── */
+/* ââ ADS PAGE â Pain Points ââ */
 .pain-list { max-width: 640px; }
 .pain-item {
   display: flex;
@@ -938,7 +938,7 @@ h3 {
   margin: 0 auto;
 }
 
-/* ── ADS — Phone Mockup ── */
+/* ââ ADS â Phone Mockup ââ */
 .phone-mockup {
   position: relative;
   max-width: 380px;
@@ -1019,7 +1019,7 @@ h3 {
   50% { transform: translateY(-8px); }
 }
 
-/* ── ADS — Guarantee Inline Badge ── */
+/* ââ ADS â Guarantee Inline Badge ââ */
 .guarantee-inline {
   display: inline-flex;
   align-items: center;
@@ -1034,7 +1034,7 @@ h3 {
   margin-top: 20px;
 }
 
-/* ── ADS — Form ── */
+/* ââ ADS â Form ââ */
 .form-section {
   background: var(--white);
   border-radius: var(--radius-card);
@@ -1081,7 +1081,7 @@ h3 {
   line-height: 1.6;
 }
 
-/* ── ADS — FAQ ── */
+/* ââ ADS â FAQ ââ */
 .faq-list { max-width: 700px; margin: 0 auto; }
 .faq-item {
   border-bottom: 1px solid var(--border);
@@ -1106,7 +1106,7 @@ h3 {
   flex-shrink: 0;
 }
 .faq-item.open .faq-question::after {
-  content: '−';
+  content: 'â';
 }
 .faq-answer {
   font-size: 15px;
@@ -1121,7 +1121,7 @@ h3 {
   padding-top: 12px;
 }
 
-/* ── Reduced Motion ── */
+/* ââ Reduced Motion ââ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -1133,7 +1133,7 @@ h3 {
   .phone-mockup { animation: none; }
 }
 
-/* ── Responsive ── */
+/* ââ Responsive ââ */
 @media (max-width: 1024px) {
   .grid-55-45, .grid-2 { grid-template-columns: 1fr; gap: 40px; }
   .grid-3, .steps, .funnel-grid, .case-grid { grid-template-columns: 1fr; }
@@ -1171,4 +1171,108 @@ h3 {
   .trust-row { flex-direction: column; align-items: center; }
 
   .floating-badge { display: none; }
+}
+
+/* ââââââââââââââââ CHECK LIST (Before/After) ââââââââââââââââ */
+.check-list { list-style: none; padding: 0; margin: 0; }
+.check-list li {
+  position: relative;
+  padding: 10px 0 10px 32px;
+  color: var(--mid);
+  font-size: 16px;
+  line-height: 1.5;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.check-list li:last-child { border-bottom: none; }
+.check-list li::before {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.check-list--check li::before { content: "â"; color: #059669; }
+.check-list--x li::before { content: "â"; color: #EF4444; }
+
+/* ââââââââââââââââ FAQ ACCORDION ââââââââââââââââ */
+.faq-list { margin-top: 32px; }
+.faq-item {
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  background: #fff;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+.faq-item:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.04); }
+.faq-item.open { box-shadow: 0 8px 24px rgba(30,113,231,0.08); border-color: rgba(30,113,231,0.2); }
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 20px 24px;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: inherit;
+}
+.faq-toggle {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(30,113,231,0.1);
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 400;
+  transition: transform 0.2s ease;
+}
+.faq-item.open .faq-toggle { transform: rotate(45deg); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+.faq-item.open .faq-answer {
+  max-height: 400px;
+  padding: 0 24px 20px;
+}
+.faq-answer p {
+  color: var(--mid);
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ââââââââââââââââ STICKY MOBILE CTA ââââââââââââââââ */
+.sticky-cta {
+  display: none;
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  background: var(--blue);
+  color: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(30,113,231,0.35);
+  z-index: 100;
+}
+@media (max-width: 768px) {
+  .sticky-cta { display: block; }
+  body { padding-bottom: 80px; }
 }
